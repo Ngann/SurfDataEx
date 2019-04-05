@@ -19,6 +19,7 @@ func (ReportRunner) RunSurfReport(fetch Fetch, multiLineParser ParseLines, lineP
 		return SurfReport{}, err
 	}
 	// returns the calculated surf report base on the above buoyData
+	// it calls the method CalculateSurfReport which takes a an array of BouyData struct and returns a SurfReport struct
 	report := calculator.CalculateSurfReport(buoyData)
 	return report, nil
 }

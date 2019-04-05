@@ -42,6 +42,7 @@ func (fetcher UrlFetcher) GetData() (string, error) {
 	// resp.Body.Close() tells the client to close the response body when the we are done with the response object
 	// if the connection remains opens, then there is a resource leak.
 	defer resp.Body.Close()
+	// ioutil package has a method ReadAll which reads from the response until an error or EOF(end of file) and returns the data it reads. A sucessful call will return no error( err ==nil)
 	b, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
@@ -55,8 +56,8 @@ type MockFetcher struct {
 	data string
 }
 
-// fetcher represents the MockFetcher struct cna calls the GetData method and returns a string and error
-// string is the data feild
+// fetcher represents the MockFetcher struct and calls the GetData method and returns a string and error
+// string is the data feild , nil the error
 func (fetcher MockFetcher) GetData() (string, error) {
 	return fetcher.data, nil
 }

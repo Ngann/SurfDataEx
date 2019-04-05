@@ -5,10 +5,12 @@ import (
 	"strings"
 )
 
+//ParseLine interface has a Parse method which takes a string and returns the BouyData struct and error
 type ParseLine interface {
 	Parse(line string) (BouyData, error)
 }
 
+//ParseLines interface has a ParseLines method which takes a string and returns an array of BouyData struct and error
 type ParseLines interface {
 	ParseLines(lines string, lineParser ParseLine) ([]BouyData, error)
 }
@@ -55,7 +57,6 @@ type MockLineParser struct {
 func (p MockLineParser) Parse(line string) (BouyData, error) {
 	return p.MockData, nil
 }
-
 
 type NoaaV2LineParser struct {
 }

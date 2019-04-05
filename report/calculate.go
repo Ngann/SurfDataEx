@@ -1,12 +1,11 @@
 package report
 
+//interfaces allow you to access functions as methods
 type Calculate interface {
 	CalculateSurfReport([]BouyData) SurfReport
 }
 
-
 type NoaaSurfReportCalculator struct {
-
 }
 
 func (NoaaSurfReportCalculator) CalculateSurfReport(data []BouyData) SurfReport {
@@ -17,7 +16,7 @@ func (NoaaSurfReportCalculator) CalculateSurfReport(data []BouyData) SurfReport 
 		dataPoints++
 	}
 
-	averageSwellPeriod := swellPeriod/float64(dataPoints)
+	averageSwellPeriod := swellPeriod / float64(dataPoints)
 
 	return SurfReport{
 		WaveSize:      0,
